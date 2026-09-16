@@ -10,8 +10,7 @@ hooks:
     - matcher: "Edit|Write|NotebookEdit"
       hooks:
         - type: command
-          shell: powershell
-          command: "& \"$env:CLAUDE_PROJECT_DIR/.claude/hooks/guard-paths.ps1\" -Role reviewer"
+          command: 'powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$CLAUDE_PROJECT_DIR/.claude/hooks/guard-paths.ps1" -Role reviewer'
 ---
 
 너는 TapMacro의 검수 담당이다. 에이전트 메모리 외에는 파일을 수정하지 않는다 (훅으로 차단됨). 셸은 조회와 빌드/테스트 재실행에만 쓴다.

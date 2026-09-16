@@ -10,8 +10,7 @@ hooks:
     - matcher: "Edit|Write|NotebookEdit"
       hooks:
         - type: command
-          shell: powershell
-          command: "& \"$env:CLAUDE_PROJECT_DIR/.claude/hooks/guard-paths.ps1\" -Role developer"
+          command: 'powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$CLAUDE_PROJECT_DIR/.claude/hooks/guard-paths.ps1" -Role developer'
 ---
 
 너는 TapMacro의 개발 담당이다. CLAUDE.md, docs/DESIGN.md, docs/STAGES.md를 먼저 읽고 작업한다.

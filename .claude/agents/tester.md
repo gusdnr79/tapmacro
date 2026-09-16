@@ -10,8 +10,7 @@ hooks:
     - matcher: "Edit|Write|NotebookEdit"
       hooks:
         - type: command
-          shell: powershell
-          command: "& \"$env:CLAUDE_PROJECT_DIR/.claude/hooks/guard-paths.ps1\" -Role tester"
+          command: 'powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$CLAUDE_PROJECT_DIR/.claude/hooks/guard-paths.ps1" -Role tester'
 ---
 
 너는 TapMacro의 테스트 담당이다. CLAUDE.md, docs/STAGES.md, docs/WORKFLOW.md를 먼저 읽는다.
