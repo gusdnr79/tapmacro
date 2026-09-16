@@ -1,0 +1,57 @@
+{
+  "env": {
+    "CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH": "1"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(./gradlew *)",
+      "Bash(./gradlew.bat *)",
+      "Bash(adb *)",
+      "Bash(git status*)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git show*)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git checkout -b *)",
+      "Bash(git switch *)",
+      "Bash(git branch*)",
+      "Bash(git fetch*)",
+      "Bash(git pull --ff-only*)",
+      "Bash(git config user.name)",
+      "Bash(git rev-parse*)",
+      "Bash(gh issue list*)",
+      "Bash(gh pr list*)",
+      "Bash(gh pr view*)"
+    ],
+    "ask": [
+      "Bash(git push origin stage-*)",
+      "Bash(git push -u origin stage-*)",
+      "Bash(gh pr create *)",
+      "Bash(gh issue create *)",
+      "Bash(git merge *)",
+      "Bash(git rebase *)"
+    ],
+    "deny": [
+      "Bash(git push --force*)",
+      "Bash(git push -f*)",
+      "Bash(adb shell pm clear *)",
+      "Bash(adb shell settings delete *)",
+      "Bash(adb uninstall com.android*)",
+      "Bash(adb shell rm -rf *)",
+      "Bash(adb reboot*)",
+      "Read(./.env)",
+      "Read(./**/*.keystore)",
+      "Read(./**/*.jks)",
+      "Bash(git push origin main*)",
+      "Bash(git push * main)",
+      "Bash(gh pr merge *)",
+      "Bash(git reset --hard*)",
+      "Bash(git clean *)",
+      "Bash(git checkout -- *)",
+      "Bash(git restore *)",
+      "Bash(git branch -D *)",
+      "Bash(git reset *)"
+    ]
+  }
+}

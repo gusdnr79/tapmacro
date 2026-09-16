@@ -1,0 +1,13 @@
+{
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "files.eol": "\n",
+  "[powershell]": { "files.eol": "\r\n" },
+  "git.autofetch": true,
+  "git.confirmSync": true,
+  "git.enableSmartCommit": false,
+  "git.allowForcePush": false,
+  "files.exclude": {
+    "**/.gradle": true,
+    "**/build": true
+  }
+}
