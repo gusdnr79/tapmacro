@@ -3,17 +3,18 @@
 참여자용 쉬운 설명서는 docs/GUIDE.html (브라우저로 열기). 이 문서는 관리자가 저장소를 처음 만들 때 보는 문서다.
 
 ## 관리자만: GitHub 저장소 설정
-- private 저장소 생성, 참여자를 Collaborator(Write)로 초대
-- 저장소 소유자 계정이 GitHub Pro여야 비공개 저장소에 main 잠금이 적용된다
+- 저장소는 **공개(Public)**. GitHub 무료 플랜에서 main 보호를 쓰기 위한 선택
+- 공개 전에 커밋 이메일을 noreply 주소로 바꾸고 기존 커밋 작성자를 다시 쓴다
 - 첫 업로드(main)는 관리자가 터미널에서 직접 한다 (Claude Code는 main push 차단)
-- Settings → Rules → Rulesets → New branch ruleset
-  - 이름 `main 보호`, Enforcement status `Active`
-  - Bypass list: Repository admin 추가, 옵션 `For pull requests only` (관리자 본인 PR 병합용)
-  - Target branches: `Include default branch`
-  - 체크: Restrict deletions / Require a pull request before merging (Required approvals 1, Dismiss stale approvals, Require review from Code Owners) / Block force pushes
+- Settings → Branches → Add classic branch protection rule
+  - Branch name pattern `main`
+  - Require a pull request before merging → Require approvals `1`, Dismiss stale pull request approvals, Require review from Code Owners
+  - Do not allow bypassing the above settings 는 체크하지 않음 (관리자 본인 PR 병합용)
+  - Allow force pushes, Allow deletions 는 체크하지 않음
 - `.github/CODEOWNERS`에 관리자가 지정되어 있어 관리자 승인만 유효하다
+- 참여자를 Collaborator로 초대
 - Issues 라벨 생성: `아이디어`, `버그`, `질문`
-- docs/STATUS.md의 관리자, 담당자 칸 작성 후 main에 커밋
+- docs/STATUS.md의 관리자, 담당자 칸 작성
 
 ## 모든 참여자
 
@@ -29,7 +30,8 @@
    ```
    회사 노트북에서 정책으로 막혀 있으면 훅이 동작하지 않는다. 이 경우에도 검수 에이전트가 git diff로 경계 위반을 잡으니 진행은 가능하다.
 6. **git 이름 설정**: `git config --global user.name "GitHub이름"` (STATUS.md 담당자 칸과 같게)
-7. **저장소 받기**: 관리자는 이 폴더의 파일을 저장소 루트에 넣고 커밋. 참여자는 `git clone <저장소 주소>`
+7. **커밋 이메일 비공개**: GitHub → Settings → Emails → `Keep my email addresses private` 체크 → 거기 표시된 `숫자+아이디@users.noreply.github.com` 주소로 `git config --global user.email` 설정
+8. **저장소 받기**: 관리자는 이 폴더의 파일을 저장소 루트에 넣고 커밋. 참여자는 `git clone <저장소 주소>`
    ```
    CLAUDE.md
    README-SETUP.md
@@ -48,14 +50,14 @@
    .github/CODEOWNERS
    .vscode/extensions.json  .vscode/settings.json
    ```
-8. 저장소 폴더에서 `claude` 실행 → 폴더 신뢰 확인 창에서 **신뢰** 선택 (프로젝트 에이전트의 훅은 신뢰한 폴더에서만 동작)
+9. 저장소 폴더에서 `claude` 실행 → 폴더 신뢰 확인 창에서 **신뢰** 선택 (프로젝트 에이전트의 훅은 신뢰한 폴더에서만 동작)
    - "사용 가능한 서브에이전트 알려줘"라고 물어서 developer, tester, reviewer가 보이는지 확인
-9. **S25 준비** (실기기 담당자만, 집에서)
+10. **폰 준비** (실기기 담당자만, 집에서)
    - 설정 → 휴대전화 정보 → 소프트웨어 정보 → 빌드번호 7번 탭
    - 설정 → 개발자 옵션 → USB 디버깅 켜기
    - USB 연결 후 폰에 뜨는 "USB 디버깅 허용" 승인 (이 컴퓨터 항상 허용)
    - 터미널에서 `adb devices`에 기기가 `device`로 보이면 완료
-10. 시작: `/sync` → `/status` → 담당이면 `/stage N`
+11. 시작: `/sync` → `/status` → 담당이면 `/stage N`
 
 ## 진행 중 사용하는 명령
 - `/sync` : 최신 받기

@@ -44,7 +44,7 @@
 | 윈도우 전역 훅, SendInput, 화면 캡처 테스트 (8단계 이후) | 금지 (보안 솔루션 탐지 위험) | O |
 
 - 오케스트레이터는 단계 시작 시 사용자에게 현재 위치(회사/집)를 묻고, 불가능한 AC는 `BLOCKED(환경)`으로 표시한 뒤 집에서 `/stage N`으로 이어서 진행한다
-- 코드 동기화: 개인 GitHub private 저장소. 사내망에서 접근이 막히면 집에서만 push/pull
+- 코드 동기화: GitHub 공개 저장소. 사내망에서 접근이 막히면 집에서만 push/pull
 
 ### 기기
 - 기본 S25, 성능 하한 S24 FE, 고해상도 S26 울트라 (STAGES.md 기기 매트릭스)
@@ -118,5 +118,7 @@ adb shell dumpsys deviceidle whitelist +com.personal.tapmacro
 - 사용자 확인 항목은 누구나 할 수 있다. 결과는 진행자에게 전달해 user-check.md에 기록한다
 - 아이디어, 버그, 질문은 `/request` → GitHub Issue. 관리자가 검토해서 STAGES/DESIGN에 반영하거나 닫는다
 - 작업 시작 전 항상 `/sync`
-- GitHub 설정(관리자): main 브랜치 보호(PR 필수, 관리자 승인 1명), 참여자는 Collaborator(Write) 권한
+- GitHub 설정(관리자): Classic 브랜치 보호로 main 보호(PR 필수, 승인 1명, Code Owners 승인 필수), 참여자는 Collaborator(Write) 권한
+- 공개 저장소이므로 외부인도 Issue, PR을 열 수 있다. 외부인의 PR은 병합하지 않고 닫는다. 스팸이 생기면 관리자가 Settings → Moderation options → Interaction limits로 제한한다
+- 커밋 이메일은 GitHub noreply 주소를 쓴다
 
